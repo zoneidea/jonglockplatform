@@ -18,11 +18,18 @@ export async function request(path, options = {}) {
     ...(options.headers || {}),
   };
 
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    method: options.method || 'GET',
-    headers,
-    body: options.body ? JSON.stringify(options.body) : undefined,
-  });
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}${path}`, {
+      method: options.method || 'GET',
+      headers,
+      body: options.body ? JSON.stringify(options.body) : undefined,
+    });
+  } catch (error) {
+    throw new ApiError('ไม่สามารถเชื่อมต่อ API ได้ กรุณาตรวจสอบโดเมนหรือ CORS ของ backend', 0, {
+      cause: error.message,
+    });
+  }
 
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) {

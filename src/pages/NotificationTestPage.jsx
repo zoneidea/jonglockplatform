@@ -9,6 +9,10 @@ const TARGET_TYPES = [
   { value: 'topic', label: 'Topic', description: 'ส่งไปยัง Firebase topic ที่ระบุ' },
 ];
 
+const TOPIC_PRESETS = [
+  { value: 'jonglock-all-mobile', label: 'ทุกเครื่องที่เปิดแจ้งเตือน' },
+];
+
 function NotificationTestPage() {
   const { session } = useAuth();
   const [form, setForm] = useState({
@@ -117,15 +121,28 @@ function NotificationTestPage() {
           ) : null}
 
           {form.targetType === 'topic' ? (
-            <label className="field">
-              <span>Firebase topic</span>
-              <input
-                value={form.topic}
-                onChange={(event) => updateForm('topic', event.target.value)}
-                placeholder="เช่น market-news"
-                required
-              />
-            </label>
+            <>
+              <label className="field">
+                <span>Firebase topic</span>
+                <input
+                  value={form.topic}
+                  onChange={(event) => updateForm('topic', event.target.value)}
+                  placeholder="เช่น jonglock-all-mobile หรือ org-12"
+                  required
+                />
+              </label>
+              <div className="status-chip-row">
+                {TOPIC_PRESETS.map((preset) => (
+                  <button
+                    key={preset.value}
+                    type="button"
+                    className="status-chip"
+                    onClick={() => updateForm('topic', preset.value)}>
+                    {preset.label}
+                  </button>
+                ))}
+              </div>
+            </>
           ) : null}
 
           <div className="notification-form-grid">

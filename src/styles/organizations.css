@@ -1,0 +1,30 @@
+.org-workspace { min-width: 0; }
+.org-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 26px; }
+.org-tabs a { padding: 12px 18px; border: 1px solid #dbe4ec; border-radius: 12px; color: #35445c; background: white; text-decoration: none; }
+.org-tabs a.active { color: white; background: #0f766e; border-color: #0f766e; }
+.org-panel { margin-bottom: 24px; }
+.org-table-scroll { overflow-x: auto; }
+.org-table { border-collapse: collapse; width: 100%; min-width: 580px; text-align: left; }
+.org-table th { background: #f3f6fa; color: #475569; }
+.org-table th, .org-table td { padding: 16px 12px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+.org-table small { display: block; color: #64748b; margin-top: 5px; }
+.org-actions, .org-section-heading { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.org-section-heading { justify-content: space-between; margin: 20px 0; }
+.org-report-filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px; }
+.org-report-filters .org-actions { grid-column: 1 / -1; }
+.org-report-filters select, .org-report-filters input { width: 100%; min-width: 0; }
+.org-notice { background: #fffbeb; border: 1px solid #f5d68a; padding: 14px; border-radius: 12px; color: #854d0e; line-height: 1.7; }
+.org-success { position: fixed; top: 90px; right: 24px; z-index: 100; padding: 18px 24px; border-radius: 14px; background: #dcfce7; color: #166534; box-shadow: 0 8px 28px #0002; }
+.org-user-dialog { width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); overflow-y: auto; border: 0; border-radius: 18px; padding: 24px; color: #172033; }
+.org-user-dialog::backdrop { background: #0f172a88; }
+.org-user-dialog .field { margin: 14px 0; }
+.org-user-dialog input { width: 100%; }
+.org-workspace button:disabled { opacity: .55; cursor: not-allowed; }
+.org-workspace :focus-visible { outline: 3px solid #0d9488; outline-offset: 3px; }
+@media (max-width: 650px) {
+  .org-tabs { display: grid; grid-template-columns: 1fr 1fr; }
+  .org-tabs a { text-align: center; padding: 12px 8px; }
+  .org-report-filters { grid-template-columns: 1fr; }
+  .org-workspace .pagination-row { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .org-success { right: 16px; left: 16px; }
+}

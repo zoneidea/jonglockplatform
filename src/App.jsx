@@ -4,6 +4,11 @@ import LoginPage from './pages/LoginPage.jsx';
 import DashboardPage from './pages/DashboardPage.jsx';
 import OrganizationsPage from './pages/OrganizationsPage.jsx';
 import OrganizationDetailPage from './pages/OrganizationDetailPage.jsx';
+import OrganizationLayout from './layouts/OrganizationLayout.jsx';
+import OrganizationMarketsPage from './pages/OrganizationMarketsPage.jsx';
+import OrganizationMarketDetailPage from './pages/OrganizationMarketDetailPage.jsx';
+import OrganizationUsersPage from './pages/OrganizationUsersPage.jsx';
+import OrganizationReportsPage from './pages/OrganizationReportsPage.jsx';
 import PlaceholderPage from './pages/PlaceholderPage.jsx';
 import SubscriptionDetailPage from './pages/SubscriptionDetailPage.jsx';
 import SubscriptionsPage from './pages/SubscriptionsPage.jsx';
@@ -25,7 +30,13 @@ function App() {
         <Route index element={<Navigate to="/dashboard" replace />} />
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="organizations" element={<OrganizationsPage />} />
-        <Route path="organizations/:organizationId" element={<OrganizationDetailPage />} />
+        <Route path="organizations/:organizationId" element={<OrganizationLayout />}>
+          <Route index element={<OrganizationDetailPage />} />
+          <Route path="markets" element={<OrganizationMarketsPage />} />
+          <Route path="markets/:marketId" element={<OrganizationMarketDetailPage />} />
+          <Route path="users" element={<OrganizationUsersPage />} />
+          <Route path="reports" element={<OrganizationReportsPage />} />
+        </Route>
         <Route path="subscriptions" element={<SubscriptionsPage />} />
         <Route path="subscriptions/:subscriptionId" element={<SubscriptionDetailPage />} />
         <Route path="billing" element={<PlaceholderPage title="การเงินแพลตฟอร์ม" description="ส่วนจัดการใบแจ้งหนี้ การชำระเงิน และภาพรวมรายได้ของแพลตฟอร์ม จะพัฒนาต่อในขั้นถัดไป" />} />

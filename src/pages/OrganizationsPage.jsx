@@ -163,7 +163,7 @@ function OrganizationsPage() {
               <span>
                 <Link to={`/organizations/${item.id}`} className="table-link-button">
                   <Eye size={16} />
-                  <span>ดูรายละเอียด</span>
+                  <span>จัดการ</span>
                 </Link>
               </span>
             </div>
